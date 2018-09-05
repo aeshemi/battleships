@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Batteships</title>
+	<link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+		<span class="navbar-brand mb-0 h1">Battleships</span>
+		<button class="btn btn-outline-success" type="button" data-bind="click: startNewGame">Start New Game</button>
+	</nav>
+	<div class="container mt-3">
+		<div class="alert" data-bind="{ css: alertStyle, text: alertMessage, visible: hasAlert }"></div>
+		<div class="row" style="display: none;" data-bind="visible: gameStarted">
+			<div class="col-sm-8">
+				<ul class="list-group" data-bind="foreach: { data: history }">
+					<li class="list-group-item" data-bind="{ css: cssClass, text: message }"></li>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<form data-bind="submit: fire">
+					<div class="input-group" data-bind="visible: !gameWon()">
+						<input type="text" class="form-control" placeholder="A5" data-bind="value: coordinates" required>
+						<div class="input-group-append">
+							<button class="btn btn-danger" type="submit">Fire!</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script data-main="scripts/app" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</body>
+</html>
